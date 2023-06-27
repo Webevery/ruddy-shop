@@ -1,0 +1,85 @@
+@import 'app/assets/styles/_variables.scss';
+
+.carousel {
+  @apply mt-28 flex-col lg:grid lg:grid-cols-4 lg:gap-8;
+}
+.item {
+  @apply relative mb-28 cursor-pointer rounded-3xl bg-ligt-gray p-5 pt-0 lg:mb-14;
+  /* background: rgba(255, 255, 255, 0.05); */
+  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+    0 1px 10px 0 rgb(0 0 0 / 12%);
+  backdrop-filter: blur(15px);
+  /* min-h-[380px] */
+  .heading {
+    @apply block text-left text-xl font-bold leading-7 text-beige;
+
+    /* max-height: 2.4rem; */
+    > span {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  .description {
+    @apply mt-5 animate-opacity text-sm text-beige opacity-90;
+  }
+
+  > div {
+    @apply relative;
+  }
+
+  .variations {
+    @apply mt-6 grid animate-opacity grid-cols-4 gap-2.5;
+    /* animation: animationOpacity 0.5s; */
+    > button {
+      @apply rounded border border-solid border-white bg-transparent px-0.5 py-0.5 text-center text-[0.6rem] font-semibold uppercase text-white transition-colors;
+
+      &.active {
+        @apply bg-white text-dark-green;
+      }
+    }
+  }
+
+  .link {
+    @apply mt-2.5 block text-center text-xs text-white;
+  }
+
+  &.active {
+    @apply bg-[#6c946b] bg-contain bg-no-repeat p-7 pt-0 shadow-2xl shadow-[#6c946b];
+    background-image: url('/images/bg.jpg');
+    background-position: center -150px;
+    background-size: 120%;
+    will-change: transform;
+    backface-visibility: hidden;
+
+    &::before {
+      @apply absolute left-0 top-0 h-full w-full rounded-3xl;
+      content: '';
+      background-image: linear-gradient(
+        0deg,
+        rgba(108, 148, 107, 1) 45%,
+        rgba(255, 255, 255, 0.4) 130%
+      );
+    }
+    .heading {
+      @apply text-3xl leading-9 text-white;
+    }
+  }
+}
+
+.variations {
+  @apply mt-2 grid animate-opacity grid-cols-4 gap-1 lg:mt-6 lg:gap-2.5;
+  &.medium {
+    > button {
+      @apply text-[0.8rem];
+    }
+  }
+  > button {
+    @apply rounded border border-solid border-white bg-transparent px-0.5 py-0.5 text-center text-[0.6rem] font-semibold uppercase text-white transition-colors;
+
+    &.active {
+      @apply bg-white text-dark-green;
+    }
+  }
+}
